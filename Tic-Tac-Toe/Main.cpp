@@ -1,6 +1,7 @@
-#include <IOstream>
-#include <conio.h>
-#include <stdlib.h>
+#include <IOstream>  //allows for cin and cout
+#include <conio.h>   //allows of _getch()
+#include <stdlib.h> //allows for the use of system()
+#include <ctime>    //allows for the creation of random numbers
 
 // function to introduce the player to the game and ask for a game mode
 char Intro() 
@@ -65,6 +66,21 @@ void PlayerTwoTurn(char acBoard[3][3])
 	acBoard[iRow - 1][iColumn - 1] = '0';
 }
 
+void ComputersTurn(char acBoard[3][3])
+{
+	int iRow = 0;
+	int iColumn = 0;
+
+	do 
+	{
+		iRow = rand() % 3;
+		iColumn = rand() % 3;
+
+	} while (acBoard[iRow][iColumn] != '.');
+
+	acBoard[iRow][iColumn] = '0';
+	
+}
 void RunGame(char cMode, char acBoard[3][3]) 
 {
 	if (cMode == '1')
@@ -81,7 +97,26 @@ void RunGame(char cMode, char acBoard[3][3])
 	}
 	else if (cMode == '2')
 	{
+		//player ones turn 
 		PrintBorad(acBoard);
+		PlayerOneTurn(acBoard);
+		
+
+		//player ones turn 
+	
+		ComputersTurn(acBoard);
+	
+
+		//player ones turn 
+		PrintBorad(acBoard);
+		PlayerOneTurn(acBoard);
+		
+
+		//player ones turn 
+		
+		ComputersTurn(acBoard);
+		PrintBorad(acBoard);
+		
 	}
 	else if (cMode == 'e' || cMode == 'E')
 	{
@@ -96,6 +131,8 @@ void RunGame(char cMode, char acBoard[3][3])
 
 int main() {
 	
+	srand(time(NULL)); //Seeding the random number that the computer will use 
+
 	char acGameBoard[3][3]; // the arry that will represent the board 
 	//pre filling the array with . to make it look nice to the pleyer 
 	for (int i = 0; i < 3; i++)
