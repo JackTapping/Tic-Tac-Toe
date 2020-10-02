@@ -21,32 +21,67 @@ char Intro()
 	cPickMode = _getch();
 	return cPickMode;
 }
-void PrintBorad(char cInput, int iRow, int iColumn)
+void ManageBoard(char cInput, int iRow, int iColumn, char acBoard[3][3])
 {
-	char acBoard[3][3];
+	
 
-	for (int i = 0; i < 3; i++)
-	{
-		for (int j = 0; j < 3; j++) 
-		{
-			acBoard[i][j] = '.';
-		}
-	}
-	std::cout << acBoard[0][0] << "|" << acBoard[0][1] << "|" << acBoard[0][2] << "\n";
-	std::cout << "-+-+-" << "\n";
-	std::cout << acBoard[1][0] << "|" << acBoard[1][1] << "|" << acBoard[1][2] << "\n";
-	std::cout << "-+-+-" << "\n";
-	std::cout << acBoard[2][0] << "|" << acBoard[2][1] << "|" << acBoard[2][2] << "\n";
 }
-void RunGame(char cMode) 
+void PrintBorad(char acBoard[3][3])
+{
+	std::cout << "  1 2 3" << "\n";
+	std::cout << "1 "<<acBoard[0][0] << "|" << acBoard[0][1] << "|" << acBoard[0][2] << "\n";
+	std::cout << "  -+-+-" << "\n";
+	std::cout << "2 "<<acBoard[1][0] << "|" << acBoard[1][1] << "|" << acBoard[1][2] << "\n";
+	std::cout << "  -+-+-" << "\n";
+	std::cout << "3 "<<acBoard[2][0] << "|" << acBoard[2][1] << "|" << acBoard[2][2] << "\n";
+
+	std::cout << "\n" << "\n" << "\n" << "\n" << "\n";
+}
+void PlayerOneTurn(char acBoard[3][3])
+{
+	int iRow;
+	int iColumn;
+
+	std::cout << "Pick a Row: ";
+	std::cin >> iRow;
+
+	std::cout << "Pick a column";
+	std::cin >> iColumn;
+
+	acBoard[iRow - 1][iColumn - 1] = 'X';
+}
+
+void PlayerTwoTurn(char acBoard[3][3])
+{
+	int iRow;
+	int iColumn;
+
+	std::cout << "Pick a Row: ";
+	std::cin >> iRow;
+
+	std::cout << "Pick a column";
+	std::cin >> iColumn;
+
+	acBoard[iRow - 1][iColumn - 1] = '0';
+}
+
+void RunGame(char cMode, char acBoard[3][3]) 
 {
 	if (cMode == '1')
 	{
-		PrintBorad('x', 2, 2);
+		//player ones turn 
+		PrintBorad(acBoard);
+		PlayerOneTurn(acBoard);
+		PrintBorad(acBoard);
+
+		//player ones turn 
+		PrintBorad(acBoard);
+		PlayerTwoTurn(acBoard);
+		PrintBorad(acBoard);
 	}
 	else if (cMode == '2')
 	{
-		PrintBorad('x', 2, 2);
+		PrintBorad(acBoard);
 	}
 	else if (cMode == 'e' || cMode == 'E')
 	{
@@ -60,9 +95,19 @@ void RunGame(char cMode)
 
 
 int main() {
-
+	
+	char acGameBoard[3][3]; // the arry that will represent the board 
+	//pre filling the array with . to make it look nice to the pleyer 
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			acGameBoard[i][j] = '.';
+		}
+	}
+	
 	char cGameMode =Intro();
-	RunGame(cGameMode);
+	RunGame(cGameMode, acGameBoard);
 
 
 	return 0;
