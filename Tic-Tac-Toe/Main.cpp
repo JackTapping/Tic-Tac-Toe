@@ -1,151 +1,200 @@
-#include <IOstream>  //allows for cin and cout
-#include <conio.h>   //allows of _getch()
-#include <stdlib.h> //allows for the use of system()
-#include <ctime>    //allows for the creation of random numbers
+#include <iostream>
+#include <Windows.h>
 
-// function to introduce the player to the game and ask for a game mode
-char Intro() 
+// changing the colour of the text based on an int paramneter 
+void ChangeTextColour(int iCoulorValue)
 {
-	std::cout << "Welcome to Tic-Tac-Toe" << "\n";
-	std::cout << "Press any key to continue..." << "\n";
+    //0 = Black 
+    //1 = Blue 
+    //2 = Green 
+    //3 = Aqua  
+    //4 = Red 
+    //5 = Purple
+    //6 = Yellow 
+    //7 = White 
 
-	_getch();
-	system("cls");
-
-	std::cout << "<<<Please Select Game Mode>>>" << "\n";
-	std::cout << "Press 1 to play aginst a Human" << "\n";
-	std::cout << "press 2 to play Aginst the Computer" << "\n";
-	std::cout << "press E to Exit" << "\n";
-
-	//getting user input
-	char cPickMode;
-	cPickMode = _getch();
-	return cPickMode;
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), iCoulorValue);
 }
-void ManageBoard(char cInput, int iRow, int iColumn, char acBoard[3][3])
+void SetCursorPosition(int x, int y)
 {
-	
-
+    HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
+    COORD pos = { x,y };
+    SetConsoleCursorPosition(output, pos);
 }
-void PrintBorad(char acBoard[3][3])
+void ChangeConsoleWindowSize(int iXValue, int iYvalue)
 {
-	std::cout << "  1 2 3" << "\n";
-	std::cout << "1 "<<acBoard[0][0] << "|" << acBoard[0][1] << "|" << acBoard[0][2] << "\n";
-	std::cout << "  -+-+-" << "\n";
-	std::cout << "2 "<<acBoard[1][0] << "|" << acBoard[1][1] << "|" << acBoard[1][2] << "\n";
-	std::cout << "  -+-+-" << "\n";
-	std::cout << "3 "<<acBoard[2][0] << "|" << acBoard[2][1] << "|" << acBoard[2][2] << "\n";
+    // changeing the size of the console window 
+    HWND console = GetConsoleWindow();
+    RECT ConsoleRect;
+    GetWindowRect(console, &ConsoleRect);
 
-	std::cout << "\n" << "\n" << "\n" << "\n" << "\n";
-}
-void PlayerOneTurn(char acBoard[3][3])
-{
-	int iRow;
-	int iColumn;
+    MoveWindow(console, ConsoleRect.left, ConsoleRect.top, iXValue, iYvalue, TRUE);
 
-	std::cout << "Pick a Row: ";
-	std::cin >> iRow;
-
-	std::cout << "Pick a column";
-	std::cin >> iColumn;
-
-	acBoard[iRow - 1][iColumn - 1] = 'X';
-}
-
-void PlayerTwoTurn(char acBoard[3][3])
-{
-	int iRow;
-	int iColumn;
-
-	std::cout << "Pick a Row: ";
-	std::cin >> iRow;
-
-	std::cout << "Pick a column";
-	std::cin >> iColumn;
-
-	acBoard[iRow - 1][iColumn - 1] = '0';
-}
-
-void ComputersTurn(char acBoard[3][3])
-{
-	int iRow = 0;
-	int iColumn = 0;
-
-	do 
-	{
-		iRow = rand() % 3;
-		iColumn = rand() % 3;
-
-	} while (acBoard[iRow][iColumn] != '.');
-
-	acBoard[iRow][iColumn] = '0';
-	
-}
-void RunGame(char cMode, char acBoard[3][3]) 
-{
-	if (cMode == '1')
-	{
-		//player ones turn 
-		PrintBorad(acBoard);
-		PlayerOneTurn(acBoard);
-		PrintBorad(acBoard);
-
-		//player ones turn 
-		PrintBorad(acBoard);
-		PlayerTwoTurn(acBoard);
-		PrintBorad(acBoard);
-	}
-	else if (cMode == '2')
-	{
-		//player ones turn 
-		PrintBorad(acBoard);
-		PlayerOneTurn(acBoard);
-		
-
-		//player ones turn 
-	
-		ComputersTurn(acBoard);
-	
-
-		//player ones turn 
-		PrintBorad(acBoard);
-		PlayerOneTurn(acBoard);
-		
-
-		//player ones turn 
-		
-		ComputersTurn(acBoard);
-		PrintBorad(acBoard);
-		
-	}
-	else if (cMode == 'e' || cMode == 'E')
-	{
-		system("cls");
-		std::cout << "Thank you for playing";
-	}
-
-
-	
 }
 
 
-int main() {
-	
-	srand(time(NULL)); //Seeding the random number that the computer will use 
+void printBoarders()
+{
+    ChangeTextColour(15);
 
-	char acGameBoard[3][3]; // the arry that will represent the board 
-	//pre filling the array with . to make it look nice to the pleyer 
-	for (int i = 0; i < 3; i++)
-	{
-		for (int j = 0; j < 3; j++)
-		{
-			acGameBoard[i][j] = '.';
-		}
-	}
-	
-	char cGameMode =Intro();
-	RunGame(cGameMode, acGameBoard);
+    int iUpperTopindex = 0;
+    int iUpperMidindex = 0;
+    int iUpperBotindex = 0;
 
+    int iLowerTopindex = 0;
+    int iLowerMidindex = 0;
+    int iLowerBotindex = 0;
 
+    bool bBoardersDrawn = false;
+
+    while(!bBoardersDrawn)
+    {
+        if (iLowerBotindex <= 5)
+        {
+            SetCursorPosition(iUpperTopindex, 0);
+            std::cout << "=";
+            iUpperTopindex++;
+
+            SetCursorPosition(iLowerBotindex, 18);
+            std::cout << "=";
+            iLowerBotindex++;
+            Sleep(50);
+        }
+        else if (iLowerBotindex <= 10)
+        {
+            SetCursorPosition(iUpperTopindex, 0);
+            std::cout << "=";
+            iUpperTopindex++;
+
+            SetCursorPosition(iUpperMidindex, 1);
+            std::cout << "=";
+            iUpperMidindex++;
+
+            SetCursorPosition(iLowerBotindex, 18);
+            std::cout << "=";
+            iLowerBotindex++;
+
+            SetCursorPosition(iLowerMidindex, 17);
+            std::cout << "=";
+            iLowerMidindex++;
+
+            Sleep(50);
+        }
+        else if (iLowerBotindex <= 56)
+        {
+            SetCursorPosition(iUpperTopindex, 0);
+            std::cout << "=";
+            iUpperTopindex++;
+
+            SetCursorPosition(iUpperMidindex, 1);
+            std::cout << "=";
+            iUpperMidindex++;
+
+            SetCursorPosition(iUpperBotindex, 2);
+            std::cout << "=";
+            iUpperBotindex++;
+
+            SetCursorPosition(iLowerBotindex, 18);
+            std::cout << "=";
+            iLowerBotindex++;
+
+            SetCursorPosition(iLowerMidindex, 17);
+            std::cout << "=";
+            iLowerMidindex++;
+
+            SetCursorPosition(iLowerTopindex, 16);
+            std::cout << "=";
+            iLowerTopindex++;
+
+            Sleep(50);
+        }
+        else
+        {
+            if(iUpperMidindex <= 56)
+            {
+                SetCursorPosition(iUpperMidindex, 1);
+                std::cout << "=";
+                iUpperMidindex++;
+
+                SetCursorPosition(iLowerMidindex, 17);
+                std::cout << "=";
+                iLowerMidindex++;
+            }
+
+            SetCursorPosition(iUpperBotindex, 2);
+            std::cout << "=";
+            iUpperBotindex++;
+
+            
+
+            SetCursorPosition(iLowerTopindex, 16);
+            std::cout << "=";
+            iLowerTopindex++;
+
+            Sleep(50);
+        }
+        
+        if (iLowerTopindex == 57) bBoardersDrawn = true;
+    }
+}
+void PrintLoading()
+{
+
+    
+    SetCursorPosition(0,6);
+
+    ChangeTextColour(12);
+    std::cout << "\t _                     _\n";
+    std::cout << "\t| |                   | (_)             \n";
+    std::cout << "\t| |     ___   __ _  __| |_ _ __   __ _  \n";
+    std::cout << "\t| |    / _ \\ / _` |/ _` | | '_ \\ / _` | \n";
+    std::cout << "\t| |___| (_) | (_| | (_| | | | | | (_| | \n";
+    std::cout << "\t\\_____/\\___/ \\__,_|\\__,_|_|_| |_|\\__, | \n";
+    std::cout << "\t                                  __/ | \n";
+    std::cout << "\t                                 |___/  \n";
+
+    Sleep(250);
+    SetCursorPosition(0, 6);
+    ChangeTextColour(11);
+    std::cout << "\t _                     _";
+
+    Sleep(250);
+    SetCursorPosition(0, 7);
+    std::cout << "\t| |                   | (_)             ";
+
+    Sleep(250);
+    SetCursorPosition(0, 8);
+    std::cout << "\t| |     ___   __ _  __| |_ _ __   __ _  ";
+
+    Sleep(250);
+    SetCursorPosition(0, 9);
+    std::cout << "\t| |    / _ \\ / _` |/ _` | | '_ \\ / _` | ";
+
+    Sleep(250);
+    SetCursorPosition(0, 10);
+    std::cout << "\t| |___| (_) | (_| | (_| | | | | | (_| | ";
+
+    Sleep(250);
+    SetCursorPosition(0, 11);
+    std::cout << "\t\\_____/\\___/ \\__,_|\\__,_|_|_| |_|\\__, | ";
+
+    Sleep(250);
+    SetCursorPosition(0, 12);
+    std::cout << "\t                                  __/ | ";
+
+    Sleep(250);
+    SetCursorPosition(0, 13);
+    std::cout << "\t                                 |___/  ";
+    std::cout << "\n\n";
+    std::cout << "\t\t";
+    Sleep(50);
+    system("Pause");
+}
+
+int main()
+{
+    ChangeConsoleWindowSize(450, 350);
+    printBoarders();
+    PrintLoading();
 	return 0;
 }
