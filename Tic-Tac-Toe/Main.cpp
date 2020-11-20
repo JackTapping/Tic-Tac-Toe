@@ -581,6 +581,119 @@ void FlashSelectedOption(char cInput)
 
 }
 
+// ========= Functions for Printing Out the Game Screen =========
+
+//Printing out the Title Menu 
+void PrintGameTitle()
+{
+    int iSleep = 100;
+
+    ChangeTextColour(15);
+    SetCursorPosition(0, 6);
+    std::cout << "============================================================================================";
+    SetCursorPosition(0, 0);
+
+    ChangeTextColour(11);
+    Sleep(iSleep);
+    std::cout << "\t\t\t    \\_/ |_|\\___|   \\_/\\__,_|\\___|   \\_/\\___/ \\___|\n";
+
+    ChangeTextColour(15);
+    SetCursorPosition(0, 6);
+    std::cout << "============================================================================================";
+    SetCursorPosition(0, 0);
+
+    ChangeTextColour(11);
+    Sleep(iSleep);
+    std::cout << "\t\t\t    | | | | (__    | | (_| | (__    | | (_) |  __/\n";
+    std::cout << "\t\t\t    \\_/ |_|\\___|   \\_/\\__,_|\\___|   \\_/\\___/ \\___|\n";
+
+    ChangeTextColour(15);
+    SetCursorPosition(0, 6);
+    std::cout << "============================================================================================";
+    SetCursorPosition(0, 0);
+
+    ChangeTextColour(11);
+    Sleep(iSleep);
+    std::cout << "\t\t\t    | | | |/ __|   | |/ _` |/ __|   | |/ _ \\ / _ \\ \n";
+    std::cout << "\t\t\t    | | | | (__    | | (_| | (__    | | (_) |  __/\n";
+    std::cout << "\t\t\t     \\_/ |_|\\___|   \\_/\\__,_|\\___|   \\_/\\___/ \\___|\n";
+
+    ChangeTextColour(15);
+    SetCursorPosition(0, 6);
+    std::cout << "============================================================================================";
+    SetCursorPosition(0, 0);
+
+    ChangeTextColour(11);
+    Sleep(iSleep);
+    std::cout << "\t\t\t    | |  _  ___    | | __ _  ___    | | ___   ___  \n";
+    std::cout << "\t\t\t    | | | |/ __|   | |/ _` |/ __|   | |/ _ \\ / _ \\ \n";
+    std::cout << "\t\t\t    | | | | (__    | | (_| | (__    | | (_) |  __/\n";
+    std::cout << "\t\t\t     \\_/ |_|\\___|   \\_/\\__,_|\\___|   \\_/\\___/ \\___|\n";
+
+    ChangeTextColour(15);
+    SetCursorPosition(0, 6);
+    std::cout << "============================================================================================";
+    SetCursorPosition(0, 0);
+
+    ChangeTextColour(11);
+    Sleep(iSleep);
+    std::cout << "\t\t\t  |_   _(_)      |_   _|          |_   _|         \n";
+    std::cout << "\t\t\t    | |  _  ___    | | __ _  ___    | | ___   ___  \n";
+    std::cout << "\t\t\t    | | | |/ __|   | |/ _` |/ __|   | |/ _ \\ / _ \\ \n";
+    std::cout << "\t\t\t    | | | | (__    | | (_| | (__    | | (_) |  __/\n";
+    std::cout << "\t\t\t    \\_/ |_|\\___|   \\_/\\__,_|\\___|   \\_/\\___/ \\___|\n";
+
+    ChangeTextColour(15);
+    SetCursorPosition(0, 6);
+    std::cout << "============================================================================================";
+    SetCursorPosition(0, 0);
+
+    ChangeTextColour(11);
+    Sleep(iSleep);
+    std::cout << "\t\t\t   _____ _        _____            _____          \n";
+    std::cout << "\t\t\t  |_   _(_)      |_   _|          |_   _|         \n";
+    std::cout << "\t\t\t    | |  _  ___    | | __ _  ___    | | ___   ___  \n";
+    std::cout << "\t\t\t    | | | |/ __|   | |/ _` |/ __|   | |/ _ \\ / _ \\ \n";
+    std::cout << "\t\t\t    | | | | (__    | | (_| | (__    | | (_) |  __/\n";
+    std::cout << "\t\t\t    \\_/ |_|\\___|   \\_/\\__,_|\\___|   \\_/\\___/ \\___|";
+}
+void PrintGameBoard()
+{
+    int iSleep = 25;
+    ChangeTextColour(15);
+    SetCursorPosition(0, 7);
+
+                                                            Sleep(iSleep);
+    std::cout << "  __      _    _____   _    _____    \n"; Sleep(iSleep);
+    std::cout << " /  |    | |  / __  \\ | |  |____ |  \n"; Sleep(iSleep);
+    std::cout << " `| |    | |  `' / /' | |      / /   \n"; Sleep(iSleep);
+    std::cout << "  | |    | |    / /   | |      \\ \\ \n"; Sleep(iSleep);
+    std::cout << " _| |_   | |  ./ /___ | |  .___/ /   \n"; Sleep(iSleep);
+    std::cout << " \\___/   | |  \\_____/ | |  \\____/ \n"; Sleep(iSleep);
+    std::cout << "         | |          | |            \n"; Sleep(iSleep);
+    std::cout << "         |_|          |_|            \n"; Sleep(iSleep);
+    std::cout << " ______ _| |_ ______ _| |_ ______    \n"; Sleep(iSleep);
+    std::cout << "|______|_   _|______|_   _|______|   \n"; Sleep(iSleep);
+    std::cout << "    ___  |_|   _____  |_|    ____    \n"; Sleep(iSleep);
+    std::cout << "   /   | | |  |  ___| | |   / ___|   \n"; Sleep(iSleep);
+    std::cout << "  / /| | | |  |___ \\  | |  / /___   \n"; Sleep(iSleep);
+    std::cout << " / /_| | | |      \\ \\ | |  | ___ \\\n"; Sleep(iSleep);
+    std::cout << " \\___  | | |  /\\__/ / | |  | \\_/ |\n"; Sleep(iSleep);
+    std::cout << "     |_/ | |  \\____/  | |  \\_____/ \n"; Sleep(iSleep);
+    std::cout << "         | |          | |            \n"; Sleep(iSleep);
+    std::cout << "         |_|          |_|            \n"; Sleep(iSleep);
+    std::cout << " ______ _| |_ ______ _| |_ ______    \n"; Sleep(iSleep);
+    std::cout << "|______|_   _|______|_   _|______|   \n"; Sleep(iSleep);
+    std::cout << "  _____  |_|   _____  |_|   _____    \n"; Sleep(iSleep);
+    std::cout << " |___  / | |  |  _  | | |  |  _  |   \n"; Sleep(iSleep);
+    std::cout << "    / /  | |   \\ V /  | |  | |_| |  \n"; Sleep(iSleep);
+    std::cout << "   / /   | |   / _ \\  | |  \\____ | \n"; Sleep(iSleep);
+    std::cout << " ./ /    | |  | |_| | | |  .___/ /   \n"; Sleep(iSleep);
+    std::cout << " \\_/     | |  \\_____/ | |  \\____/ \n"; Sleep(iSleep);
+    std::cout << "         | |          | |            \n"; Sleep(iSleep);
+    std::cout << "         |_|          |_|         ";      Sleep(iSleep);
+}
+
 
 
 
@@ -592,30 +705,56 @@ int main()
     PrintMenu();
     std::cout << "\n\n";
 
-    cInput = _getch();
-    FlashSelectedOption(cInput);
-
-    switch (cInput)
+    do
     {
-    case '1':
-        system("cls");
-        std::cout << "Menu option 1";
-        system("pause");
-        break;
-    case '2':
-        system("cls");
-        std::cout << "Menu option 2";
-        system("pause");
-        break;
-    case 'e':
-    case 'E':
-        system("cls");
-        system("pause");
-        break;
-    default:
-        Beep(500, 500);
-        break;
+        cInput = _getch();
+        if (cInput != '1' && cInput != '2' && cInput != 'e' && cInput != 'E')
+        {
+            Beep(500, 500);
+        }
+    } while (cInput != '1' && cInput != '2' && cInput != 'e' && cInput != 'E');
+    
+    while (cInput != 'e' &&  cInput != 'E')
+    {
+        
+        FlashSelectedOption(cInput);
+    
+    
+        switch (cInput)
+        {
+        case '1':
+            system("cls");
+            PrintGameTitle();
+            PrintGameBoard();
+            _getch();
+            system("cls");
+            break;
+        case '2':
+            system("cls");
+            std::cout << "Menu option 2";
+            system("pause");
+            system("cls");
+            break;
+        }
+
+        PrintMenu();
+        std::cout << "\n\n";
+
+        do
+        {
+            cInput = _getch();
+            if (cInput != '1' && cInput != '2' && cInput != 'e' && cInput != 'E')
+            {
+                Beep(500, 500);
+            }
+        } while (cInput != '1' && cInput != '2' && cInput != 'e' && cInput != 'E');
     }
+
+    system("cls");
+    std::cout << "Thanks for playing";
+    
+
+
 
 	return 0;
 }
