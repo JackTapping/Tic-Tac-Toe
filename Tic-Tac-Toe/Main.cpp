@@ -966,9 +966,190 @@ void UpdateGameVisuals(char cInput, int iPlayerturn)
     
 }
 
+void PrintPlayerOneWin()
+{
+    int iXOffSet = 15;
+    int iYOffSet = 8;
+    int iSleep(50);
+    ChangeTextColour(11);
 
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "______ _                         _____ _   _  _____ ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "| ___ \\ |                       |  _  | \\ | ||  ___|";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "| |_/ / | __ _ _   _  ___ _ __  | | | |  \\| || |__ ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "|  __/| |/ _` | | | |/ _ \\ '__| | | | | . ` ||  __|";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "| |   | | (_| | |_| |  __/ |    \\ \\_/ / |\\  || |___";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "\\_|   |_|\\__,_|\\__, |\\___|_|     \\___/\\_| \\_/\\____/";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "                __/ |                           ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "               |___/                           ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "";
+    std::cout << "  _   _   ___   _____     _    _  _____ _   _ ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << " | | | | / _ \\ /  ___|   | |  | ||  _  | \\ | |";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << " | |_| |/ /_\\ \\\\ `--.    | |  | || | | |  \\| |";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << " |  _  ||  _  | `--. \\   | |/\\| || | | | . ` |";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << " | | | || | | |/\\__/ /   \\  /\\  /\\ \\_/ / |\\  |";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << " \\_| |_/\\_| |_/\\____/     \\/  \\/  \\___/\\_| \\_/";
+    SetCursorPosition(iXOffSet + 10, iYOffSet++);
+    Sleep(iSleep);
+}
+void PrintPlayerTwoWin()
+{
+    int iXOffSet = 20;
+    int iYOffSet = 8;
+    int iSleep(50);
+    ChangeTextColour(12);
+
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "______ _                         _____              ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "| ___ \\ |                       |_   _|             ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "| |_/ / | __ _ _   _  ___ _ __    | |_      _____   ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "|  __/| |/ _` | | | |/ _ \\ '__|   | \\ \\ /\\ / / _ \\  ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "| |   | | (_| | |_| |  __/ |      | |\\ V  V / (_) | ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "\\_|   |_|\\__,_|\\__, |\\___|_|      \\_/ \\_/\\_/ \\___/  ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "                __/ |                               ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "               |___/                                ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "";
+    std::cout << "  _   _   ___   _____     _    _  _____ _   _ ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << " | | | | / _ \\ /  ___|   | |  | ||  _  | \\ | |";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << " | |_| |/ /_\\ \\\\ `--.    | |  | || | | |  \\| |";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << " |  _  ||  _  | `--. \\   | |/\\| || | | | . ` |";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << " | | | || | | |/\\__/ /   \\  /\\  /\\ \\_/ / |\\  |";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << " \\_| |_/\\_| |_/\\____/     \\/  \\/  \\___/\\_| \\_/";
+    SetCursorPosition(iXOffSet + 10, iYOffSet++);
+    Sleep(iSleep);
+}
+void PrintItsADraw() 
+{
+    int iXOffSet = 20;
+    int iYOffSet = 14;
+    int iSleep(50);
+    ChangeTextColour(15);
+
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << " _____ _____ _ _____          ___   ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "|_   _|_   _( )  ___|        / _ \\  ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "  | |   | | |/\\ `--.        / /_\\ \\ ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "  | |   | |    `--. \\       |  _  |";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << " _| |_  | |   /\\__/ /       | | | |";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << " \\___/  \\_/   \\____/        \\_| |_/";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "";
+    std::cout << "     ____________  ___  _    _     ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "     |  _  \\ ___ \\/ _ \\| |  | |";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "     | | | | |_/ / /_\\ \\ |  | | ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "     | | | |    /|  _  | |/\\| |";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "     | |/ /| |\\ \\| | | \\  /\\  / ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "     |___/ \\_| \\_\\_| |_/\\/  \\/ ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+
+}
+void ClearGameScreen() 
+{
+    int iFowardWipe = 0;
+    int iBackWipe = 92;
+    int iYOffSet = 0;
+
+    for (int i = 0; i < 18; i++)
+    {
+        for (;iFowardWipe < 91; iFowardWipe++)
+        {
+            SetCursorPosition(iFowardWipe, iYOffSet);
+            std::cout << " ";
+            Sleep(1);
+        }
+        iYOffSet++;
+        iFowardWipe = 0;
+        for (;iBackWipe >= 0; iBackWipe--)
+        {
+            SetCursorPosition(iBackWipe, iYOffSet);
+            std::cout << " ";
+            Sleep(1);
+        }
+        iYOffSet++;
+        iBackWipe = 92;
+    }
+}
 
 // ======== Functions for the Games Logic =========
+
+// for placing pices on the board 
 bool IsSapceFree(char cInput, char boardArray[3][3])
 {
     if (cInput == '1')
@@ -1064,17 +1245,172 @@ bool IsBoardFull(char BoardArray[3][3])
     return false;
 }
 
+//for looking to see who won or if the game was a draw
+int HorizontalWin(char GameBoard[3][3])
+{
+    int iIsX = 0;
+    int iIsO = 0;
+
+    for (int i = 0; i < 3; i++)
+    {
+        
+        for(int j = 0; j < 3 ; j++)
+        {
+            if (GameBoard[i][j] == 'x')
+            {
+                iIsO = 0;
+                iIsX++;
+                if (iIsX == 3) return 0;
+            }
+            else if(GameBoard[i][j] == 'o')
+            {
+                iIsX = 0;
+                iIsO++;
+                if (iIsO == 3) return 1;
+            }
+            else
+            {
+                iIsO = 0;
+                iIsX = 0;
+            }
+            
+        }
+        iIsO = 0;
+        iIsX = 0;
+    }
+    return -1;
+}
+int VerticalWin(char GameBoard[3][3])
+{
+    int iIsX = 0;
+    int iIsO = 0;
+
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            if (GameBoard[j][i] == 'x')
+            {
+                iIsO = 0;
+                iIsX++;
+                if (iIsX == 3) return 0;
+            }
+            else if (GameBoard[j][i] == 'o')
+            {
+                iIsX = 0;
+                iIsO++;
+                if (iIsO == 3) return 1;
+            }
+            else
+            {
+                iIsO = 0;
+                iIsX = 0;
+            }
+        }
+        iIsO = 0;
+        iIsX = 0;
+    }
+    return -1;
+}
+int DownDiagonalWin(char GameBoard[3][3])
+{
+    int iIsX = 0;
+    int iIsO = 0;
+    for ( int i = 0;  i < 3;  i++)
+    {
+        if(GameBoard[i][i] == 'x')
+        {
+
+            iIsO = 0;
+            iIsX++;
+            if (iIsX == 3) return 0;
+        }
+        else if (GameBoard[i][i] == 'o')
+        {
+
+            iIsX = 0;
+            iIsO++;
+            if (iIsO == 3) return 1;
+        }
+        else
+        {
+            iIsX = 0;
+            iIsO = 0;
+        }
+    }
+    return -1;
+}
+int UpDiagonalWin(char GameBoard[3][3])
+{
+    int iIsX = 0;
+    int iIsO = 0;
+
+    int iColumn = 0;
+    for (int i = 2; i >= 0; i--)
+    {
+        if (GameBoard[i][iColumn] == 'x')
+        {
+
+            iIsO = 0;
+            iIsX++;
+            if (iIsX == 3) return 0;
+        }
+        else if (GameBoard[i][iColumn] == 'o')
+        {
+
+            iIsX = 0;
+            iIsO++;
+            if (iIsO == 3) return 1;
+        }
+        else
+        {
+            iIsX = 0;
+            iIsO = 0;
+        }
+
+        iColumn++;
+    }
+    return -1;
+}
+int CheckForWin(char GameBoard[3][3])
+{
+    int iWhoWon = -1;
+
+    iWhoWon = HorizontalWin(GameBoard);
+    if(iWhoWon == -1) iWhoWon = VerticalWin(GameBoard);
+    if(iWhoWon == -1)iWhoWon = UpDiagonalWin(GameBoard);
+    if(iWhoWon == -1)iWhoWon = DownDiagonalWin(GameBoard);
+
+    return iWhoWon;
+}
+
+// restting the array for the next game 
+void WipeBoard(char GameBoard[3][3])
+{
+    for (int i = 0; i < 3; i++)
+    {
+        for(int j = 0; j < 3 ; j++)
+        {
+            GameBoard[i][j] = '.';
+        }
+    }
+}
+
 
 
 
 int main()
 {
+    
     //startting Variables 
     char cInput = ' '; // is the only veriable used to get input 
-    int iPlayerTurn = 0; // 0 = player ones turn || 2 = playe twos turn 
+
+    int iPlayerTurn = 0; // 0 = player 1 turn || 1 = player 2 turn 
+    int iPlayerWon = -1; // 0 = player 1 has won || 1 = player 2 has won
   
     bool bKeepPlaying = true;
     bool bFreeSpace = false;
+    bool bGameIsADraw = false;
 
     char GameStateArray[3][3] = { '.','.','.',    '.','.','.',    '.','.','.', };
     
@@ -1114,8 +1450,35 @@ int main()
                     iPlayerTurn--;
                 }
 
-                bFreeSpace = false;
-                bKeepPlaying = IsBoardFull(GameStateArray);
+                iPlayerWon = CheckForWin(GameStateArray);
+                if (iPlayerWon == 0)
+                {
+                    bKeepPlaying = false;
+                    ClearGameScreen();
+                    PrintPlayerOneWin();
+                    Sleep(500);
+                }
+                else if(iPlayerWon == 1)
+                {
+                    bKeepPlaying = false;
+                    ClearGameScreen();
+                    PrintPlayerTwoWin();
+                    Sleep(500);
+                }
+
+                
+                if(bKeepPlaying == true)
+                {
+                    bFreeSpace = false;
+                    bKeepPlaying = IsBoardFull(GameStateArray);
+                    if(bKeepPlaying == false)
+                    {
+                        ClearGameScreen();
+                        PrintItsADraw();
+                        Sleep(500);
+                    }
+                }
+               
             }
             
             system("cls");
@@ -1128,17 +1491,21 @@ int main()
             break;
         }
 
+        //restting for the new game 
+        WipeBoard(GameStateArray);
+        bKeepPlaying = true;
+        bFreeSpace = false;
+        iPlayerWon = -1;
+        iPlayerTurn = 0;
+
         PrintMenu();
         cInput = GetMenuInput();
         FlashSelectedOption(cInput);
         std::cout << "\n\n";
+
     }
 
     system("cls");
     std::cout << "Thanks for playing";
-    
-
-
-
 	return 0;
 }
