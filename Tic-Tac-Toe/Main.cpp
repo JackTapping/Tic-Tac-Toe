@@ -1,6 +1,12 @@
 #include <iostream>
 #include <Windows.h>
 #include <conio.h>
+#include<ctype.h>
+#include <ctime>
+#include <vector>
+#include <algorithm>
+
+
 
 // ========= functions to control the console window ========
 void ChangeTextColour(int iCoulorValue)
@@ -711,7 +717,7 @@ void PrintGameBoard()
 }
 void PrintRules()
 {
-    int i = 10;
+    int i = 9;
     ChangeTextColour(13);
     SetCursorPosition(55, i++);
     std::cout << "   ___Rules___";
@@ -731,7 +737,7 @@ void PrintRules()
     std::cout << "pice will be placed on the ";
     SetCursorPosition(55, i++);
     std::cout << "suqare that contains that number";
-    SetCursorPosition(55, i++);
+    
 
     std::cout << " ";
     SetCursorPosition(55, i++);
@@ -744,6 +750,11 @@ void PrintRules()
     std::cout << "Player 2 = ";
     ChangeTextColour(12);
     std::cout << "O";
+
+    SetCursorPosition(55, i++);
+    SetCursorPosition(55, i++);
+    ChangeTextColour(15);
+    std::cout << "Press e or E to exit the game";
 
     SetCursorPosition(55, i++);
     SetCursorPosition(55, i++);
@@ -1147,6 +1158,104 @@ void ClearGameScreen()
     }
 }
 
+void PrintThankYouScreen()
+{
+    int iXOffSet = 20;
+    int iYOffSet = 8;
+    int iSleep(50);
+    ChangeTextColour(14);
+
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << " _____ _                 _                          ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "|_   _| |               | |                         ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "  | | | |__   __ _ _ __ | | __  _   _  ___  _   _   ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "  | | | '_ \\ / _` | '_ \\| |/ / | | | |/ _ \\| | | |  ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "  | | | | | | (_| | | | |   <  | |_| | (_) | |_| |  ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "  \\_/ |_| |_|\\__,_|_| |_|_|\\_\\  \\__, |\\___/ \\__,_|  ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "                                 __/ |              ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "                                |___/               ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "  __                   _             _              ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << " / _|                 | |           (_)             ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "| |_ ___  _ __   _ __ | | __ _ _   _ _ _ __   __ _  ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "|  _/ _ \\| '__| | '_ \\| |/ _` | | | | | '_ \\ / _` | ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "| || (_) | |    | |_) | | (_| | |_| | | | | | (_| | ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "|_| \\___/|_|    | .__/|_|\\__,_|\\__, |_|_| |_|\\__, | ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "                | |             __/ |         __/ | ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+    std::cout << "                |_|            |___/         |___/  ";
+    SetCursorPosition(iXOffSet, iYOffSet++);
+    Sleep(iSleep);
+  
+}
+void PatchyFade()
+{
+    int iRandomNumber = 0;
+    int iXOffSet = 0;
+    int iYOffSet = 0;
+    int iSleep(1);
+
+    std::pair<int, int> XYpair;
+    std::vector<std::pair<int,int>> XYVector;
+
+    for (int i = 20; i < 80; i++)
+    {
+        for (int j = 8; j < 25; j++) 
+        {
+            XYpair.first = i;
+            XYpair.second = j;
+            XYVector.push_back(XYpair);
+        }
+    }
+
+    for( int i = XYVector.size(); i > 0; i=XYVector.size())
+    {
+        iRandomNumber = rand() % XYVector.size();
+        XYpair = XYVector[iRandomNumber];
+        iXOffSet = XYpair.first;
+        iYOffSet = XYpair.second;
+
+        SetCursorPosition(iXOffSet, iYOffSet++);
+        Sleep(iSleep);
+        std::cout << " ";
+
+        XYVector.erase(XYVector.begin() + iRandomNumber);
+    }
+    
+
+    
+    
+}
+
 // ======== Functions for the Games Logic =========
 
 // for placing pices on the board 
@@ -1188,6 +1297,16 @@ bool IsSapceFree(char cInput, char boardArray[3][3])
     {
         return boardArray[2][2] == '.' ? true : false;
     }
+    
+}
+bool VaildInput(char cInput) 
+{
+    if(!isdigit(cInput) && cInput != 'e' && cInput != 'E')
+    {
+        Beep(500, 500);
+        return false;
+    }
+    return true;
     
 }
 void UpdateGameState(int PlayerTurn, char cInput, char BoardArray[3][3])
@@ -1244,6 +1363,7 @@ bool IsBoardFull(char BoardArray[3][3])
     }
     return false;
 }
+
 
 //for looking to see who won or if the game was a draw
 int HorizontalWin(char GameBoard[3][3])
@@ -1401,18 +1521,21 @@ void WipeBoard(char GameBoard[3][3])
 
 int main()
 {
-    
     //startting Variables 
     char cInput = ' '; // is the only veriable used to get input 
 
     int iPlayerTurn = 0; // 0 = player 1 turn || 1 = player 2 turn 
     int iPlayerWon = -1; // 0 = player 1 has won || 1 = player 2 has won
+    int iCPUMove = 0; // will hold a random number for the CPU to play with 
   
     bool bKeepPlaying = true;
     bool bFreeSpace = false;
+    bool bVailidInput = false;
     bool bGameIsADraw = false;
 
     char GameStateArray[3][3] = { '.','.','.',    '.','.','.',    '.','.','.', };
+
+    srand(time(NULL)); //Seeding random number for CPU
     
     // laoding the game and getting menu input fromt he user 
     PrintLoadScreen();
@@ -1431,52 +1554,61 @@ int main()
             {
                 if (bKeepPlaying == true)
                 {
-                    while (bFreeSpace == false)
+                    while (bFreeSpace == false || bVailidInput == false)
                     {
                         cInput = _getch();
                         bFreeSpace = IsSapceFree(cInput, GameStateArray);
+                        bVailidInput = VaildInput(cInput);
                     }
                 }
-
-                UpdateGameState(iPlayerTurn, cInput, GameStateArray);
-                UpdateGameVisuals(cInput, iPlayerTurn);
-
-                if (iPlayerTurn == 0)
+ 
+                if (cInput != 'e' && cInput != 'E')
                 {
-                    iPlayerTurn++;
+                    UpdateGameState(iPlayerTurn, cInput, GameStateArray);
+                    UpdateGameVisuals(cInput, iPlayerTurn);
+
+                    if (iPlayerTurn == 0)
+                    {
+                        iPlayerTurn++;
+                    }
+                    else
+                    {
+                        iPlayerTurn--;
+                    }
+
+                    iPlayerWon = CheckForWin(GameStateArray);
+                    if (iPlayerWon == 0)
+                    {
+                        bKeepPlaying = false;
+                        ClearGameScreen();
+                        PrintPlayerOneWin();
+                        Sleep(500);
+                    }
+                    else if (iPlayerWon == 1)
+                    {
+                        bKeepPlaying = false;
+                        ClearGameScreen();
+                        PrintPlayerTwoWin();
+                        Sleep(500);
+                    }
+
+
+                    if (bKeepPlaying == true)
+                    {
+                        bFreeSpace = false;
+                        bVailidInput = false;
+                        bKeepPlaying = IsBoardFull(GameStateArray);
+                        if (bKeepPlaying == false)
+                        {
+                            ClearGameScreen();
+                            PrintItsADraw();
+                            Sleep(500);
+                        }
+                    }
                 }
                 else
                 {
-                    iPlayerTurn--;
-                }
-
-                iPlayerWon = CheckForWin(GameStateArray);
-                if (iPlayerWon == 0)
-                {
                     bKeepPlaying = false;
-                    ClearGameScreen();
-                    PrintPlayerOneWin();
-                    Sleep(500);
-                }
-                else if(iPlayerWon == 1)
-                {
-                    bKeepPlaying = false;
-                    ClearGameScreen();
-                    PrintPlayerTwoWin();
-                    Sleep(500);
-                }
-
-                
-                if(bKeepPlaying == true)
-                {
-                    bFreeSpace = false;
-                    bKeepPlaying = IsBoardFull(GameStateArray);
-                    if(bKeepPlaying == false)
-                    {
-                        ClearGameScreen();
-                        PrintItsADraw();
-                        Sleep(500);
-                    }
                 }
                
             }
@@ -1484,9 +1616,146 @@ int main()
             system("cls");
             break;
         case '2':
-            system("cls");
-            std::cout << "Menu option 2";
-            system("pause");
+            InitializeGame();
+
+            while (bKeepPlaying == true)
+            {
+                
+                
+                if (bKeepPlaying == true)
+                {
+                    while (bFreeSpace == false || bVailidInput == false)
+                    {
+                        if (iPlayerTurn == 0)
+                        {
+                            cInput = _getch();
+                            bFreeSpace = IsSapceFree(cInput, GameStateArray);
+                            bVailidInput = VaildInput(cInput);
+                        }
+                        else
+                        {
+
+                            cInput = (char)48 + (1 + (rand() % 9));
+                            bFreeSpace = IsSapceFree(cInput, GameStateArray);
+                            bVailidInput = VaildInput(cInput);
+                        }
+                    }
+                }
+
+                if (cInput != 'e' && cInput != 'E')
+                {
+                    UpdateGameState(iPlayerTurn, cInput, GameStateArray);
+                    UpdateGameVisuals(cInput, iPlayerTurn);
+
+                    if (iPlayerTurn == 0)
+                    {
+                        iPlayerTurn++;
+                    }
+                    else
+                    {
+                        iPlayerTurn--;
+                    }
+
+                    iPlayerWon = CheckForWin(GameStateArray);
+                    if (iPlayerWon == 0)
+                    {
+                        bKeepPlaying = false;
+                        ClearGameScreen();
+                        PrintPlayerOneWin();
+                        Sleep(500);
+                    }
+                    else if (iPlayerWon == 1)
+                    {
+                        bKeepPlaying = false;
+                        ClearGameScreen();
+                        PrintPlayerTwoWin();
+                        Sleep(500);
+                    }
+
+
+                    if (bKeepPlaying == true)
+                    {
+                        bFreeSpace = false;
+                        bVailidInput = false;
+                        bKeepPlaying = IsBoardFull(GameStateArray);
+                        if (bKeepPlaying == false)
+                        {
+                            ClearGameScreen();
+                            PrintItsADraw();
+                            Sleep(500);
+                        }
+                    }
+                }
+                else
+                {
+                    bKeepPlaying = false;
+                }
+
+            }
+
+            while (bKeepPlaying == true)
+            {
+                if (bKeepPlaying == true)
+                {
+                    while (bFreeSpace == false || bVailidInput == false)
+                    {
+                        cInput = _getch();
+                        bFreeSpace = IsSapceFree(cInput, GameStateArray);
+                        bVailidInput = VaildInput(cInput);
+                    }
+                }
+
+                if (cInput != 'e' && cInput != 'E')
+                {
+                    UpdateGameState(iPlayerTurn, cInput, GameStateArray);
+                    UpdateGameVisuals(cInput, iPlayerTurn);
+
+                    if (iPlayerTurn == 0)
+                    {
+                        iPlayerTurn++;
+                    }
+                    else
+                    {
+                        iPlayerTurn--;
+                    }
+
+                    iPlayerWon = CheckForWin(GameStateArray);
+                    if (iPlayerWon == 0)
+                    {
+                        bKeepPlaying = false;
+                        ClearGameScreen();
+                        PrintPlayerOneWin();
+                        Sleep(500);
+                    }
+                    else if (iPlayerWon == 1)
+                    {
+                        bKeepPlaying = false;
+                        ClearGameScreen();
+                        PrintPlayerTwoWin();
+                        Sleep(500);
+                    }
+
+
+                    if (bKeepPlaying == true)
+                    {
+                        bFreeSpace = false;
+                        bVailidInput = false;
+                        bKeepPlaying = IsBoardFull(GameStateArray);
+                        if (bKeepPlaying == false)
+                        {
+                            ClearGameScreen();
+                            PrintItsADraw();
+                            Sleep(500);
+                        }
+                    }
+                }
+                else
+                {
+                    bKeepPlaying = false;
+                }
+
+            }
+
             system("cls");
             break;
         }
@@ -1495,6 +1764,7 @@ int main()
         WipeBoard(GameStateArray);
         bKeepPlaying = true;
         bFreeSpace = false;
+        bVailidInput = false;
         iPlayerWon = -1;
         iPlayerTurn = 0;
 
@@ -1506,6 +1776,8 @@ int main()
     }
 
     system("cls");
-    std::cout << "Thanks for playing";
+    PrintThankYouScreen();
+    PatchyFade();
+    system("cls");
 	return 0;
 }
